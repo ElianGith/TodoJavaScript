@@ -8,6 +8,7 @@ export default class Model {
           id: 0,
           title: 'Learn JS',
           description: 'Watch JS Tutorials',
+          date: '2024-11-05',
           completed: false,
         }
       ]
@@ -46,24 +47,25 @@ export default class Model {
     this.save();
   }
 
-  addTodo(title, description) {
+  addTodo(title, description, date) {
     const todo = {
       id: this.currentId++,
       title,
       description,
+      date,
       completed: false,
-    }
+    };
 
     this.todos.push(todo);
     console.log(this.todos);
     this.save();
 
-    return {...todo};
+    return { ...todo };
   }
 
   removeTodo(id) {
     const index = this.findTodo(id);
-    this.todos.splice(index, 1);  
+    this.todos.splice(index, 1);
     this.save();
   }
 }
